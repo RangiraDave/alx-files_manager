@@ -15,20 +15,20 @@ class DBClient {
     const host = process.env.DB_HOST || 'localhost';
     const port = process.env.DB_PORT || 27017;
     const database = process.env.DB_DATABASE || 'files_manager';
-    //const dbURL = `mongodb://${host}:${port}/${database}`;
+    const dbURL = `mongodb://${host}:${port}/${database}`;
 
-    //this.client = new mongodb.MongoClient(dbURL, { useUnifiedTopology: true });
-    //this.client.connect();
+    this.client = new mongodb.MongoClient(dbURL, { useUnifiedTopology: true });
+    this.client.connect();
   }
 
   /**
    * Checks if this client's connection to the MongoDB server is active.
    * @returns {boolean}
-   
+   */
 
   isAlive() {
     return this.client.isConnected();
-  }*/
+  }
 
   /**
    * Retrieves the number of users in the database.
@@ -51,7 +51,7 @@ class DBClient {
   /**
    * Retrieves a reference to the `users` collection.
    * @returns {Promise<Collection>}
-   
+   */
 
   async usersCollection() {
     return this.client.db().collection('users');
@@ -60,11 +60,11 @@ class DBClient {
   /**
    * Retrieves a reference to the `files` collection.
    * @returns {Promise<Collection>}
-   
+   */
 
   async filesCollection() {
     return this.client.db().collection('files');
-  }*/
+  }
 }
 
 export const dbClient = new DBClient();
