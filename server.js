@@ -1,11 +1,19 @@
+/**
+ * This file exports an Express server instance.
+ * The server is configured with middlewares, routes,
+ * and starts listening on a specified port.
+ * @module server
+ */
+
 import express from 'express';
-import routes from './routes/index';
+import startServer from './libs/boot';
+import injectRoutes from './routes';
+import injectMiddlewares from './libs/middlewares';
 
-const app = express();
-const port = process.env.PORT || 5000;
+const server = express();
 
-app.use('/', routes);
+injectMiddlewares(server);
+injectRoutes(server);
+startServer(server);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+export default server;

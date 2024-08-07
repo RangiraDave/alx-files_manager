@@ -1,3 +1,13 @@
+/** 
+ * @description This script is responsible for loading
+ * the appropriate environment variables based on the event.
+ * It checks the value of the `npm_lifecycle_event`
+ * environment variable and determines the path of the
+ * environment file to load.
+ * If the file exists, it reads the contents, parses each line,
+ * and sets the corresponding environment variable with its value.
+ */
+
 import { existsSync, readFileSync } from 'fs';
 
 /**

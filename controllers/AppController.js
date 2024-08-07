@@ -1,8 +1,8 @@
 /**
  * AppController class representing the controller for the application.
  */
-/* eslint-disable import/no-named-as-default */
 
+/* eslint-disable import/no-named-as-default */
 import redisClient from '../utils/redis';
 import dbClient from '../utils/db';
 
